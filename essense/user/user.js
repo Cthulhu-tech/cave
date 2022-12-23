@@ -12,4 +12,7 @@ export class User extends Essense {
         // create instance
         User.instance = this
     }
+    DeleteInstanse = () => {
+        delete User.instance
+    }
 }

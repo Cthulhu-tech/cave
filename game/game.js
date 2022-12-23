@@ -1,13 +1,16 @@
+import { GetUserClass } from '../essense/user/factoryUserClass.js'
 export class Game {
-    #gameLevel
     #canvas
     #ctx
+
+    #chooseCharacter = document.querySelector('.choose_character')
+
+    #characterArrayButton = [...document.querySelectorAll('.button_character')]
     constructor() {
         if(Game.instance){
             return Game.instance
         }
         Game.instance = this
-        this.#gameLevel = 0
         this.#canvas = document.querySelector('.canvas')
         this.#ctx = this.#canvas.getContext('2d')
     }
@@ -28,6 +31,13 @@ export class Game {
         this.#canvasSize()
         window.addEventListener('resize', this.#canvasSize)
         requestAnimationFrame(this.#animationFrame)
+    }
+    #characterType = (event) => {
+       console.log( new GetUserClass(event.target.dataset.type))
+    }
+    PlayerChooseCharacter = () => {
+        this.#chooseCharacter.style.display = 'block'
+        this.#characterArrayButton.forEach((character) => character.addEventListener('click', this.#characterType))
     }
     StartGame = () => {
         this.#eventsHandler()

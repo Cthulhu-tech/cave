@@ -15,8 +15,15 @@ class Menu {
 
         this.#mainMenu = document.querySelector('.main_menu')
     }
-    #startGameSubscribe(){
-        this.#startGame.subscribe(new Game().StartGame)
+    #startGameSubscribe = () => {
+        this.#start.addEventListener('click', this.#startHandler)
+        this.#startGame.subscribe(new Game().PlayerChooseCharacter)
+    }
+    #statGameSubscribe = () => {
+        this.#stats.addEventListener('click', this.#statsHandler)
+    }
+    #optionsGameSubscribe = () => {
+        this.#options.addEventListener('click', this.#optionsHandler)
     }
     #hiddenMenu = () => {
         this.#mainMenu.style.display = 'none'
@@ -33,9 +40,8 @@ class Menu {
     }
     MenuHandler = () => {
         this.#startGameSubscribe()
-        this.#start.addEventListener('click', this.#startHandler)
-        this.#stats.addEventListener('click', this.#statsHandler)
-        this.#options.addEventListener('click', this.#optionsHandler)
+        this.#statGameSubscribe()
+        this.#optionsGameSubscribe()
     }
 }
 

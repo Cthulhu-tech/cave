@@ -1,10 +1,10 @@
 export class Observer {
     #observers
     constructor(){
-        this.#observers = []
+        this.#observers = new Set()
     }
     subscribe(callcback) {
-        this.#observers.push(callcback)
+        this.#observers.add(callcback)
     }
     unsubscribe(callback) {
         this.#observers = this.observers.filter(observer => observer !== callback)

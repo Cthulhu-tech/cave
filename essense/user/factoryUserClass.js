@@ -4,6 +4,7 @@ export class GetUserClass {
     constructor(typeUser = 'default', nameUser = 'user') {
         switch (typeUser){
             case 'FIGHTER':
+                this.#DeleteOldClass()
                 return new User()
                 .SetName('fighter')
                 .SetHp(4)
@@ -16,6 +17,7 @@ export class GetUserClass {
                 .SetAgility(4)
                 .SetLuck(4)
             case 'TANK':
+                this.#DeleteOldClass()
                 return new User()
                 .SetName('tank')
                 .SetHp(5)
@@ -28,6 +30,7 @@ export class GetUserClass {
                 .SetAgility(3)
                 .SetLuck(3)
             case 'ROGUE':
+                this.#DeleteOldClass()
                 return new User()
                 .SetName('rogue')
                 .SetHp(4)
@@ -39,7 +42,8 @@ export class GetUserClass {
                 .SetCharisma(2)
                 .SetAgility(2)
                 .SetLuck(3)
-            case 'RANGER': 
+            case 'RANGER':
+                this.#DeleteOldClass()
                 return new User()
                 .SetName('ranger')
                 .SetHp(4)
@@ -64,6 +68,7 @@ export class GetUserClass {
                 .SetAgility(2)
                 .SetLuck(3)
             case 'SUMMONER':
+                this.#DeleteOldClass()
                 return new User()
                 .SetName('summoner')
                 .SetHp(4)
@@ -75,8 +80,9 @@ export class GetUserClass {
                 .SetCharisma(2)
                 .SetAgility(2)
                 .SetLuck(3)
-            case 'CLERIC': 
-            return new User()
+            case 'CLERIC':
+                this.#DeleteOldClass()
+                return new User()
                 .SetName('cleric')
                 .SetHp(4)
                 .SetSpeed(4)
@@ -88,6 +94,7 @@ export class GetUserClass {
                 .SetAgility(2)
                 .SetLuck(3)
             case 'BARD':
+                this.#DeleteOldClass()
                 return new User()
                 .SetName('bard')
                 .SetHp(4)
@@ -101,5 +108,9 @@ export class GetUserClass {
                 .SetLuck(3)
             default: return new User().SetName(nameUser)
         }
+
+    }        
+    #DeleteOldClass = () => {
+        new User().DeleteInstanse()
     }
 }
