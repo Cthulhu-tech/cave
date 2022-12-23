@@ -35,6 +35,9 @@ export class Game {
     #characterType = (event) => {
        console.log( new GetUserClass(event.target.dataset.type))
     }
+    DeleteInstanse = () => {
+        delete Game.instance
+    }
     PlayerChooseCharacter = () => {
         this.#chooseCharacter.style.display = 'block'
         this.#characterArrayButton.forEach((character) => character.addEventListener('click', this.#characterType))
