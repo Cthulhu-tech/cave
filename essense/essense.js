@@ -19,7 +19,7 @@ export class Essense {
         this.#speed = 1
         this.#defence = 1
 
-        this.#buildPoint = 20
+        this.#buildPoint = 36
 
         this.#entelligence = 1
         this.#perception = 1
@@ -123,7 +123,7 @@ export class Essense {
         }
         return false
     }
-    SetDeference(defence) {
+    SetDefence(defence) {
         if(this.#buildPoint > 0 && defence < this.#buildPoint){
             this.#defence += defence
             return this
