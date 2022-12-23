@@ -1,35 +1,42 @@
-class Game {
-    #gameLevel
-    #canvas
-    #ctx
+import { Observer } from './utils/observer.js'
+import { Game } from './game/game.js'
+
+class Menu {
+    #start
+    #stats
+    #options
+    #mainMenu
+    #startGame
     constructor() {
-        this.#gameLevel = 0
-        this.#canvas = document.querySelector('.canvas')
-        this.#ctx = this.#canvas.getContext('2d')
+        this.#startGame = new Observer()
+        this.#start = document.querySelector('.button_start')
+        this.#stats = document.querySelector('.button_stats')
+        this.#options = document.querySelector('.button_options')
+
+        this.#mainMenu = document.querySelector('.main_menu')
     }
-    #canvasSize = () => {
-        this.#canvas.style.width = window.innerWidth + 'px'
-        this.#canvas.style.height = window.innerHeight + 'px'
-        this.#canvas.width = window.innerWidth
-        this.#canvas.height = window.innerHeight
+    #startGameSubscribe(){
+        this.#startGame.subscribe(new Game().StartGame)
     }
-    #clearCanvas = (x = 0, y = 0) => {
-        this.#ctx.clearRect(0, y, x, this.#canvas.height)
+    #hiddenMenu = () => {
+        this.#mainMenu.style.display = 'none'
     }
-    #animationFrame = () => {
-        this.#clearCanvas()
-        requestAnimationFrame(this.#animationFrame)
+    #startHandler = () => {
+        this.#hiddenMenu()
+        this.#startGame.notlify()
     }
-    #eventsHandler = () => {
-        this.#canvasSize()
-        window.addEventListener('resize', this.#canvasSize)
-        requestAnimationFrame(this.#animationFrame)
+    #statsHandler = () => {
+        this.#hiddenMenu()
     }
-    Main = () => {
-        this.#eventsHandler()
+    #optionsHandler = () => {
+        this.#hiddenMenu()
+    }
+    MenuHandler = () => {
+        this.#startGameSubscribe()
+        this.#start.addEventListener('click', this.#startHandler)
+        this.#stats.addEventListener('click', this.#statsHandler)
+        this.#options.addEventListener('click', this.#optionsHandler)
     }
 }
 
-const game = new Game()
-
-game.Main()
+new Menu().MenuHandler()
