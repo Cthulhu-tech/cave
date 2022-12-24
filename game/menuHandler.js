@@ -1,6 +1,8 @@
 export class PositionMenu {
     #backButton
     #menuSection
+
+    #backArray = []
     constructor() {
         if(PositionMenu.instance){
             return PositionMenu.instance
@@ -12,17 +14,16 @@ export class PositionMenu {
         this.#backButton.addEventListener('click', this.#getBack)
     }
     #getBack = () => {
-        if(!this.#backButton.hasAttribute('back')){
+        if(this.#backArray.length === 0){
             this.ShowSection('main_menu')
         }else{
-            this.ShowSection(this.#backButton.getAttribute('back'))
-            this.#backButton.removeAttribute('back')
+            this.ShowSection(this.#backArray.pop())
         }
     }
     ShowSection = (className) => {
         this.#menuSection.forEach((menuSection) => menuSection.classList.contains(className) ? menuSection.style.display = 'flex' : menuSection.style.display = 'none')
     }
     SetBackPosition = (positionBack) => {
-        this.#backButton.setAttribute('back', positionBack)
+        this.#backArray.push(positionBack)
     }
 }
