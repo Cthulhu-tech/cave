@@ -6,6 +6,8 @@ export class Essense {
 
     #buildPoint
 
+    #type
+
     #perception
     #endurance
     #charisma
@@ -18,6 +20,7 @@ export class Essense {
         this.#name = 'essense'
         this.#speed = 1
         this.#defence = 1
+        this.#type = 'essense'
 
         this.#buildPoint = 36
 
@@ -83,7 +86,7 @@ export class Essense {
     GetDefence = () => {
         return this.#defence
     }
-    GetBuildPoint() {
+    GetBuildPoint = () => {
         return this.#buildPoint
     }
     GetEntelligence = () => {
@@ -104,26 +107,29 @@ export class Essense {
     GetLuck = () => {
         return this.#luck
     }
+    GetType = () => {
+        return this.#type
+    }
     //
-    SetName(name) {
+    SetName = (name) => {
         this.#name = name
         return this
     }
-    SetSpeed(speed) {
+    SetSpeed = (speed) => {
         if(this.#buildPoint > 0 && speed < this.#buildPoint){
             this.#speed += speed
             return this
         }
         return false
     }
-    SetHp(hp) {
+    SetHp = (hp) => {
         if(this.#buildPoint > 0 && hp < this.#buildPoint){
             this.#hp += hp
             return this
         }
         return false
     }
-    SetDefence(defence) {
+    SetDefence = (defence) => {
         if(this.#buildPoint > 0 && defence < this.#buildPoint){
             this.#defence += defence
             return this
@@ -131,50 +137,54 @@ export class Essense {
         return false
     }
     //
-    SetEntelligence(entelligence) {
+    SetEntelligence = (entelligence) => {
         if(this.#buildPoint > 0 && entelligence < this.#buildPoint){
             this.#entelligence += entelligence
             return this
         }
         return false
     }
-    SetPerception(perception) {
+    SetPerception = (perception) => {
         if(this.#buildPoint > 0 && perception < this.#buildPoint){
             this.#perception += perception
             return this
         }
         return false
     }
-    SetEndurance(endurance) {
+    SetEndurance = (endurance) => {
         if(this.#buildPoint > 0 && endurance < this.#buildPoint){
             this.#endurance += endurance
             return this
         }
         return false
     }
-    SetCharisma(charisma) {
+    SetCharisma = (charisma) => {
         if(this.#buildPoint > 0 && charisma < this.#buildPoint){
             this.#charisma += charisma
             return this
         }
         return false
     }
-    SetAgility(agility) {
+    SetAgility = (agility) => {
         if(this.#buildPoint > 0 && agility < this.#buildPoint){
             this.#agility += agility
             return this
         }
         return false
     }
-    SetLuck(luck) {
+    SetLuck = (luck) => {
         if(this.#buildPoint > 0 && luck < this.#buildPoint){
             this.#luck += luck
             return this
         }
         return false
     }
+    SetType = (type) => {
+        this.#type = type
+        return this
+    }
     //
-    Build(essense) { 
+    Build = (essense) => { 
         return new essense()
     }
 }

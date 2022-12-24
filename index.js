@@ -1,19 +1,23 @@
+import { PositionMenu } from './game/menuHandler.js'
 import { Observer } from './utils/observer.js'
 import { Game } from './game/game.js'
 
-class Menu {
+export class Menu {
     #start
     #stats
     #options
-    #mainMenu
     #startGame
+
     constructor() {
+        if(Menu.instance){
+            return Menu.instance
+        }
+        Menu.instance = this
+
         this.#startGame = new Observer()
         this.#start = document.querySelector('.button_start')
         this.#stats = document.querySelector('.button_stats')
         this.#options = document.querySelector('.button_options')
-
-        this.#mainMenu = document.querySelector('.main_menu')
     }
     #startGameSubscribe = () => {
         this.#start.addEventListener('click', this.#startHandler)
@@ -25,18 +29,15 @@ class Menu {
     #optionsGameSubscribe = () => {
         this.#options.addEventListener('click', this.#optionsHandler)
     }
-    #hiddenMenu = () => {
-        this.#mainMenu.style.display = 'none'
-    }
     #startHandler = () => {
-        this.#hiddenMenu()
+        new PositionMenu().ShowSection('choose_character')
         this.#startGame.notlify()
     }
     #statsHandler = () => {
-        this.#hiddenMenu()
+        new PositionMenu().ShowSection('game_stats')
     }
     #optionsHandler = () => {
-        this.#hiddenMenu()
+        new PositionMenu().ShowSection('game_options')
     }
     MenuHandler = () => {
         this.#startGameSubscribe()

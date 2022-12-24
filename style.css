@@ -41,6 +41,12 @@ body {
     width: clamp(280px, 50%, 600px);
 }
 
+.button_back {
+    left: 0;
+    bottom: 0;
+    position: fixed;
+}
+
 .choose_character {
     width: 100%;
     height: 100vh;
@@ -52,4 +58,11 @@ body {
     display: flex;
     flex-direction: column;
     width: clamp(280px, 100%, 500px);
+}
+
+.customizite_character {
+    width: 100%;
+    height: 100vh;
+    display: none;
+    background-color: yellow;
 }

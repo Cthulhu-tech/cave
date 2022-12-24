@@ -8,15 +8,17 @@
     <title>Cave</title>
 </head>
 <body>
-    <section class="main_menu">
+    <button class="button button_back">back</button>
+    <section class="main_menu menu_section">
         <div class="wrapper_button">
             <button class="button button_start">START</button>
             <button class="button button_stats">STATS</button>
             <button class="button button_options">OPTIONS</button>
         </div>
     </section>
-    <section class="choose_character">
+    <section class="choose_character menu_section">
         <div class="wrapper_button_character">
+            <input class="input input_userName" name="userName"/>
             <button class="button_character button_fighter" data-type="FIGHTER">FIGHTER</button>
             <button class="button_character button_tank"  data-type="TANK">TANK</button>
             <button class="button_character button_rogue" data-type="ROGUE">ROGUE</button>
@@ -27,6 +29,9 @@
             <button class="button_character button_bard" data-type="BARD">BARD</button>
             <button class="button_character button_custom" data-type="CUSTOM">CUSTOM</button>
         </div>
+    </section>
+    <section class="customizite_character menu_section">
+
     </section>
     <canvas class="canvas"></canvas>
     <script src="index.js" type="module" defer></script>
