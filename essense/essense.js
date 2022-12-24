@@ -31,6 +31,9 @@ export class Essense {
         this.#agility = 1
         this.#luck = 1
     }
+    #buildPointsChange = (points) => {
+        this.#buildPoint -= points
+    }
     //
     SelfDead = () => {
         this.#hp = 0
@@ -45,7 +48,7 @@ export class Essense {
         return `${this.#name} increased SPEED to ${this.#speed} (+${speedUp})`
     }
     UpHp = (hpUp = 1) => {
-        this.#hp += defenceUp
+        this.#hp += hpUp
         return `${this.#name} increased HP to ${this.#hp} (+${hpUp})`
     }
     //
@@ -115,66 +118,75 @@ export class Essense {
         this.#name = name
         return this
     }
-    SetSpeed = (speed) => {
-        if(this.#buildPoint > 0 && speed < this.#buildPoint){
+    SetSpeed = (speed = 1) => {
+        if(this.#buildPoint >= 0 && speed <= this.#buildPoint && this.#speed <= 10 && this.#speed >= 1){
             this.#speed += speed
+            this.#buildPointsChange(speed)
             return this
         }
         return false
     }
-    SetHp = (hp) => {
-        if(this.#buildPoint > 0 && hp < this.#buildPoint){
+    SetHp = (hp = 1) => {
+        if(this.#buildPoint >= 0 && hp <= this.#buildPoint && this.#hp <= 10 && this.#hp >= 1){
             this.#hp += hp
+            this.#buildPointsChange(hp)
             return this
         }
         return false
     }
-    SetDefence = (defence) => {
-        if(this.#buildPoint > 0 && defence < this.#buildPoint){
+    SetDefence = (defence = 1) => {
+        if(this.#buildPoint >= 0 && defence <= this.#buildPoint && this.#defence <= 10 && this.#defence >= 1){
             this.#defence += defence
+            this.#buildPointsChange(defence)
             return this
         }
         return false
     }
     //
-    SetEntelligence = (entelligence) => {
-        if(this.#buildPoint > 0 && entelligence < this.#buildPoint){
+    SetEntelligence = (entelligence = 1) => {
+        if(this.#buildPoint >= 0 && entelligence <= this.#buildPoint && this.#entelligence <= 10 && this.#entelligence >= 1){
             this.#entelligence += entelligence
+            this.#buildPointsChange(entelligence)
             return this
         }
         return false
     }
-    SetPerception = (perception) => {
-        if(this.#buildPoint > 0 && perception < this.#buildPoint){
+    SetPerception = (perception = 1) => {
+        if(this.#buildPoint >= 0 && perception <= this.#buildPoint && this.#perception <= 10 && this.#perception >= 1){
             this.#perception += perception
+            this.#buildPointsChange(perception)
             return this
         }
         return false
     }
-    SetEndurance = (endurance) => {
-        if(this.#buildPoint > 0 && endurance < this.#buildPoint){
+    SetEndurance = (endurance = 1) => {
+        if(this.#buildPoint >= 0 && endurance <= this.#buildPoint && this.#endurance <= 10 && this.#endurance >= 1){
             this.#endurance += endurance
+            this.#buildPointsChange(endurance)
             return this
         }
         return false
     }
-    SetCharisma = (charisma) => {
-        if(this.#buildPoint > 0 && charisma < this.#buildPoint){
+    SetCharisma = (charisma = 1) => {
+        if(this.#buildPoint >= 0 && charisma <= this.#buildPoint && this.#charisma <= 10 && this.#charisma >= 1){
             this.#charisma += charisma
+            this.#buildPointsChange(charisma)
             return this
         }
         return false
     }
-    SetAgility = (agility) => {
-        if(this.#buildPoint > 0 && agility < this.#buildPoint){
+    SetAgility = (agility = 1) => {
+        if(this.#buildPoint >= 0 && agility <= this.#buildPoint && this.#agility <= 10 && this.#agility >= 1){
             this.#agility += agility
+            this.#buildPointsChange(agility)
             return this
         }
         return false
     }
-    SetLuck = (luck) => {
-        if(this.#buildPoint > 0 && luck < this.#buildPoint){
+    SetLuck = (luck = 1) => {
+        if(this.#buildPoint >= 0 && luck <= this.#buildPoint && this.#luck <= 10 && this.#luck >= 1){
             this.#luck += luck
+            this.#buildPointsChange(luck)
             return this
         }
         return false
