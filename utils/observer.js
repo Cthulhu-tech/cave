@@ -9,7 +9,10 @@ export class Observer {
     unsubscribe(callback) {
         this.#observers = this.observers.filter(observer => observer !== callback)
     }
-    notlify(data) {
-        this.#observers.forEach(observer => observer(data))
+    notlify(data = null) {
+        if(data)
+            this.#observers.forEach(observer => observer(data))
+        else
+            this.#observers.forEach(observer => observer())
     }
 }
