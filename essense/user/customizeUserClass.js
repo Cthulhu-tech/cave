@@ -33,6 +33,7 @@ export class CustomizeUserClass {
     }
     #setValue = (input) => {
         input.value = this.#getValue(input)
+        input.previousElementSibling.firstElementChild.style.width = 13 * input.value + 'px'
     }
     #getValue = (input) => {
         switch (input.getAttribute('data-type')){
@@ -63,7 +64,9 @@ export class CustomizeUserClass {
         return false
     }
     #pointsUpdate = () => {
-        this.#pointsParagraph.innerHTML = 'POINTS: ' + new User().GetBuildPoint()
+        const points = new User().GetBuildPoint()
+        this.#pointsParagraph.firstElementChild.innerHTML = 'POINTS: ' + points
+        this.#pointsParagraph.style.height = 3 * points + 'px'
     }
     Customize = () => {
         this.#showElement()
