@@ -1,4 +1,5 @@
 import { Observer } from '../../utils/observer.js'
+import { PositionMenu } from '../menuHandler.js'
 
 export class Canvas {
     #canvas
@@ -11,6 +12,7 @@ export class Canvas {
         this.#subscribe()
     }
     #subscribe = () => {
+        new PositionMenu().HiddenSection()
         this.#observer.subscribe(this.#deleteEventHandler)
         this.#observer.subscribe(this.#eventsHandler)
     }

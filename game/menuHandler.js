@@ -20,6 +20,9 @@ export class PositionMenu {
             this.ShowSection(this.#backArray.pop())
         }
     }
+    HiddenSection = () => {
+        this.#menuSection.forEach((menuSection) => menuSection.style.display = 'none')
+    }
     ShowSection = (className) => {
         this.#menuSection.forEach((menuSection) => menuSection.classList.contains(className) ? menuSection.style.display = 'flex' : menuSection.style.display = 'none')
     }
