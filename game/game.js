@@ -16,7 +16,7 @@ export class Game {
         if(user.GetType() === 'vagabond') {
             new CustomizeUserClass().Customize()
         }else{
-            new Canvas().StartGame()
+            new Canvas().CanvasStart()
         }
     }
     DeleteInstanse = () => {
